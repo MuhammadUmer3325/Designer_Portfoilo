@@ -22,8 +22,10 @@ export const collections: Collection[] = [
       { id: 2, title: "Gaming Banner", image: "/banner2.jpg", category: "Gaming" },
       { id: 3, title: "Event Banner", image: "/banner3.jpg", category: "Event" },
       { id: 4, title: "Promo Banner", image: "/banner4.jpg", category: "Promotional" },
-      { id: 5, title: "Sports Banner 2", image: "/placeholder.svg?height=300&width=400", category: "Sports" },
-      { id: 6, title: "Tech Banner", image: "/placeholder.svg?height=300&width=400", category: "Technology" },
+      { id: 5, title: "Banner 5", image: "/banner5.jpg", category: "Promotional" },
+      { id: 6, title: "Banner 6", image: "/banner6.jpg", category: "Promotional" },
+      { id: 7, title: "Sports Banner 2", image: "/placeholder.svg?height=300&width=400", category: "Sports" },
+      { id: 8, title: "Tech Banner", image: "/placeholder.svg?height=300&width=400", category: "Technology" },
     ],
   },
   {
