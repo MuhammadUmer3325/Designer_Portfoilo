@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
               <Palette className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">DesignStudio</span>
+              <span className="text-xl font-bold">Art_Athlete</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Professional graphic design services for gaming, sports, and business. Creating stunning visuals that
@@ -147,7 +147,7 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <p className="text-sm text-muted-foreground">© {currentYear} DesignStudio. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© {currentYear} Art_Athlete. All rights reserved.</p>
           <div className="flex space-x-6 text-sm text-muted-foreground">
             <Link href="/contact" className="hover:text-primary transition-colors">
               Privacy Policy

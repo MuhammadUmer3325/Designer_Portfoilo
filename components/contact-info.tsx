@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin, Twitter } from "lucide-react"
+import Link from "next/link"
 
 export function ContactInfo() {
   return (
@@ -11,11 +12,15 @@ export function ContactInfo() {
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-3">
             <Mail className="h-5 w-5 text-primary" />
-            <span>designer@example.com</span>
+            <a href="mailto:info.artathlete@gmail.com" className="hover:text-primary transition-colors">
+              info.artathlete@gmail.com
+            </a>
           </div>
           <div className="flex items-center space-x-3">
-            <Phone className="h-5 w-5 text-primary" />
-            <span>+1 (555) 123-4567</span>
+            <Twitter className="h-5 w-5 text-primary" />
+            <a href="https://x.com/Its_ArtAthlete" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              @Its_ArtAthlete
+            </a>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="h-5 w-5 text-primary" />
@@ -32,8 +37,7 @@ export function ContactInfo() {
           <ul className="space-y-2 text-sm">
             <li>• Custom Banner Design</li>
             <li>• Profile Picture Creation</li>
-            <li>• Emote Design</li>
-            <li>• Mascot Character Design</li>
+            <li>• Cover Art Design</li>
             <li>• Stream Overlay Design</li>
             <li>• Logo & Brand Identity</li>
             <li>• Social Media Graphics</li>
