@@ -15,12 +15,12 @@ export function HeroBanner() {
           priority
           sizes="100vw"
         />
-        {/* Overlay for better text readability - lighter on mobile */}
-        <div className="absolute inset-0 bg-black/20 sm:bg-black/30"></div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/10 sm:bg-black/20"></div>
       </div>
       
-      {/* Content - Visible on all screens */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      {/* Content - Hidden on mobile, visible on desktop */}
+      <div className="hidden sm:block container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-tight">
             Creative
@@ -50,8 +50,8 @@ export function HeroBanner() {
         </div>
       </div>
       
-      {/* Scroll indicator - visible on all screens */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+      {/* Scroll indicator - hidden on very small screens */}
+      <div className="hidden sm:block absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
         <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white" />
       </div>
     </section>
