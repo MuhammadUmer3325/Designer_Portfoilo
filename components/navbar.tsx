@@ -15,9 +15,12 @@ import {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const navItems = [
+  const leftNavItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+  ]
+
+  const rightNavItems = [
     { name: "Contact", href: "/contact" },
   ]
 
@@ -32,33 +35,41 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <Image 
-              src="/main logo.png" 
-              alt="Art_Athlete Logo" 
-              width={50} 
-              height={50} 
-              className="h-12 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => (
+        <div className="flex h-16 items-center justify-center">
+          {/* Left Navigation - Desktop Only */}
+          <div className="hidden md:flex items-center space-x-6 mr-24">
+            {leftNavItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className={`text-sm font-bold transition-colors hover:text-primary uppercase tracking-wide ${
+                  item.name === "Home" ? "mr-4" : item.name === "About" ? "ml-2" : ""
+                }`}
               >
                 {item.name}
               </Link>
             ))}
-            
+          </div>
+
+          {/* Center Logo */}
+          <div className="flex items-center justify-center">
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/main logo.png" 
+                alt="Art_Athlete Logo" 
+                width={50} 
+                height={50} 
+                className="h-12 w-auto"
+              />
+            </Link>
+          </div>
+
+          {/* Right Navigation - Desktop Only */}
+          <div className="hidden md:flex items-center space-x-4 ml-16">
             {/* Services Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium hover:text-primary">
+                <Button variant="ghost" className="text-sm font-bold hover:text-primary uppercase tracking-wide">
                   Services
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
@@ -73,10 +84,21 @@ export function Navbar() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+            
+            {/* Contact Link */}
+            {rightNavItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-bold transition-colors hover:text-primary uppercase tracking-wide"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Navigation Button */}
-          <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <Button variant="ghost" size="sm" className="md:hidden absolute right-4" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
@@ -85,7 +107,7 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden border-t py-4">
             <div className="flex flex-col space-y-3">
-              {navItems.map((item) => (
+              {leftNavItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -112,6 +134,18 @@ export function Navbar() {
                   ))}
                 </div>
               </div>
+              
+              {/* Mobile Contact */}
+              {rightNavItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-medium transition-colors hover:text-primary px-2 py-1"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         )}

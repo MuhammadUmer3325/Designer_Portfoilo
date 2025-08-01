@@ -10,7 +10,7 @@ export default function ContactPage() {
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold tracking-tight mb-4">Get In Touch</h1>
+            <h1 className="text-4xl font-bebas tracking-tight mb-4">Get In Touch</h1>
             <p className="text-lg text-muted-foreground">
               Ready to bring your creative vision to life? Let's discuss your project!
             </p>

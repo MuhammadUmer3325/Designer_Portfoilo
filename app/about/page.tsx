@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Hero Section */}
           <div className="text-center space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight">About DesignStudio</h1>
+            <h1 className="text-4xl font-bebas tracking-tight">About Art_Athlete</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Professional graphic designer specializing in gaming, sports, and digital content creation. Bringing
               creative visions to life with stunning visual designs.
@@ -54,7 +54,7 @@ export default function AboutPage() {
           {/* About Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold">My Story</h2>
+              <h2 className="text-2xl font-bebas">My Story</h2>
               <p className="text-muted-foreground">
                 Started as a passionate gamer and artist, I discovered my love for graphic design through creating
                 content for gaming communities. Over the years, I've honed my skills and expanded into professional
@@ -68,7 +68,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold">Skills & Expertise</h2>
+              <h2 className="text-2xl font-bebas">Skills & Expertise</h2>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary">Adobe Photoshop</Badge>
                 <Badge variant="secondary">Adobe Illustrator</Badge>

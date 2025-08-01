@@ -205,7 +205,7 @@ export function WorkModal() {
     <Dialog open={isOpen} onOpenChange={closeModal}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">{workData.title}</DialogTitle>
+                      <DialogTitle className="text-2xl font-bebas">{workData.title}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6">

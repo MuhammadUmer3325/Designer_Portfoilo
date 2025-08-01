@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { ArrowDown } from "lucide-react"
+import { ArrowDown, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HeroBanner() {
   return (
@@ -20,33 +21,23 @@ export function HeroBanner() {
       </div>
       
       {/* Content - Hidden on mobile, visible on desktop */}
-      <div className="hidden sm:block container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-tight">
-            Creative
-            <span className="text-primary block sm:inline"> Design</span>
-            <br className="hidden sm:block" />
-            Solutions
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-xs sm:max-w-md md:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-            Professional graphic design services including banners, logos, mascots, emotes, and more. Bringing your
-            creative vision to life with stunning visual designs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
-            <Button 
-              size="lg" 
-              className="text-sm sm:text-base lg:text-lg px-4 sm:px-6 lg:px-8 w-full sm:w-auto h-10 sm:h-auto"
-            >
-              View My Work
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-sm sm:text-base lg:text-lg px-4 sm:px-6 lg:px-8 bg-transparent border-white text-white hover:bg-white hover:text-black w-full sm:w-auto h-10 sm:h-auto"
-            >
-              Get In Touch
-            </Button>
+              <div className="hidden sm:block container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 mt-96">
+          <div className="flex flex-col items-center space-y-4">
+            <Link href="/contact">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-4 bg-white text-black hover:bg-gray-100 font-bold uppercase tracking-wide drop-shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl group"
+              >
+                Start Your Project
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
+            <p className="text-white/80 text-sm font-medium animate-pulse">
+              Let's create something amazing together
+            </p>
           </div>
+
         </div>
       </div>
       

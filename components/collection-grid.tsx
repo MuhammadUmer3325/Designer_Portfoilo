@@ -70,7 +70,7 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
     <section className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">{collection.title}</h2>
+                      <h2 className="text-3xl font-bebas tracking-tight">{collection.title}</h2>
           <p className="text-muted-foreground mt-2">{collection.description}</p>
         </div>
         {showFirst && collection.items.length > showFirst && (
