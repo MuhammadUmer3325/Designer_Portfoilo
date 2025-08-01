@@ -199,27 +199,7 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
             </div>
           </div>
           
-          {/* Navigation Buttons */}
-          {canScrollPrev && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
-              onClick={scrollPrev}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-          )}
-          {canScrollNext && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
-              onClick={scrollNext}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          )}
+
         </div>
       ) : (
         <div className="md:hidden">

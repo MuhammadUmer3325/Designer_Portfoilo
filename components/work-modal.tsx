@@ -138,44 +138,9 @@ export function WorkModal() {
             <Minimize2 className="h-6 w-6" />
           </Button>
 
-          {/* Navigation Buttons */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:bg-white/20"
-            onClick={handlePrevious}
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:bg-white/20"
-            onClick={handleNext}
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
 
-          {/* Zoom Controls */}
-          <div className="absolute top-4 left-4 z-10 flex gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-white hover:bg-white/20"
-              onClick={handleZoomOut}
-            >
-              <ZoomOut className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-white hover:bg-white/20"
-              onClick={handleZoomIn}
-            >
-              <ZoomIn className="h-4 w-4" />
-            </Button>
-          </div>
+
 
           {/* Image Counter */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-white text-sm">
