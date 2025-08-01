@@ -33,15 +33,14 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center">
             <Image 
               src="/main logo.png" 
               alt="Art_Athlete Logo" 
-              width={40} 
-              height={40} 
-              className="h-10 w-auto"
+              width={50} 
+              height={50} 
+              className="h-12 w-auto"
             />
-            <span className="text-xl font-bold">Art_Athlete</span>
           </Link>
 
           {/* Desktop Navigation */}

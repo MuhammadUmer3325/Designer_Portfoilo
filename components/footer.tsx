@@ -12,15 +12,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center">
               <Image 
                 src="/main logo.png" 
                 alt="Art_Athlete Logo" 
-                width={32} 
-                height={32} 
-                className="h-8 w-auto"
+                width={40} 
+                height={40} 
+                className="h-10 w-auto"
               />
-              <span className="text-xl font-bold">Art_Athlete</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Professional graphic design services for gaming, sports, and business. Creating stunning visuals that
