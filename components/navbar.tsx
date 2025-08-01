@@ -3,7 +3,8 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Palette, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
+import Image from "next/image"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,7 +34,13 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Palette className="h-6 w-6 text-primary" />
+            <Image 
+              src="/main logo.png" 
+              alt="Art_Athlete Logo" 
+              width={40} 
+              height={40} 
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-bold">Art_Athlete</span>
           </Link>
 

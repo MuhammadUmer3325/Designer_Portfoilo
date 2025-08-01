@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Palette, Mail, Phone, MapPin, Instagram, Twitter, Dribbble, DribbbleIcon as Behance, Globe } from "lucide-react"
+import { Mail, Phone, MapPin, Instagram, Twitter, Dribbble, DribbbleIcon as Behance, Globe } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 export function Footer() {
@@ -12,7 +13,13 @@ export function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Palette className="h-6 w-6 text-primary" />
+              <Image 
+                src="/main logo.png" 
+                alt="Art_Athlete Logo" 
+                width={32} 
+                height={32} 
+                className="h-8 w-auto"
+              />
               <span className="text-xl font-bold">Art_Athlete</span>
             </Link>
             <p className="text-sm text-muted-foreground">
