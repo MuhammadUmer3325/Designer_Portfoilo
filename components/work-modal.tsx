@@ -4,7 +4,7 @@ import { useWorkModal } from "@/hooks/use-work-modal"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { X, Maximize2, Minimize2, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { collections } from "@/lib/data"
@@ -15,6 +15,10 @@ export function WorkModal() {
   const [zoomLevel, setZoomLevel] = useState(1)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [allImages, setAllImages] = useState<any[]>([])
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 })
+  const imageRef = useRef<HTMLDivElement>(null)
 
   // Get all images from all collections
   useEffect(() => {
@@ -29,6 +33,7 @@ export function WorkModal() {
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen)
     setZoomLevel(1) // Reset zoom when toggling full screen
+    setImagePosition({ x: 0, y: 0 }) // Reset position
   }
 
   const handleImageClick = () => {
@@ -41,6 +46,58 @@ export function WorkModal() {
 
   const handleZoomOut = () => {
     setZoomLevel(prev => Math.max(prev - 0.5, 0.5))
+  }
+
+  // Touch gesture handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Two finger touch - zoom gesture
+      const touch1 = e.touches[0]
+      const touch2 = e.touches[1]
+      const distance = Math.sqrt(
+        Math.pow(touch2.clientX - touch1.clientX, 2) +
+        Math.pow(touch2.clientY - touch1.clientY, 2)
+      )
+      setDragStart({ x: distance, y: 0 })
+    } else if (e.touches.length === 1) {
+      // Single finger touch - pan gesture
+      setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY })
+      setIsDragging(true)
+    }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault()
+    
+    if (e.touches.length === 2) {
+      // Zoom gesture
+      const touch1 = e.touches[0]
+      const touch2 = e.touches[1]
+      const distance = Math.sqrt(
+        Math.pow(touch2.clientX - touch1.clientX, 2) +
+        Math.pow(touch2.clientY - touch1.clientY, 2)
+      )
+      
+      const scale = distance / dragStart.x
+      const newZoom = Math.max(0.5, Math.min(3, zoomLevel * scale))
+      setZoomLevel(newZoom)
+      setDragStart({ x: distance, y: 0 })
+    } else if (e.touches.length === 1 && isDragging) {
+      // Pan gesture
+      const deltaX = e.touches[0].clientX - dragStart.x
+      const deltaY = e.touches[0].clientY - dragStart.y
+      
+      setImagePosition(prev => ({
+        x: prev.x + deltaX,
+        y: prev.y + deltaY
+      }))
+      
+      setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY })
+    }
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
   }
 
   const handlePrevious = () => {
@@ -126,7 +183,10 @@ export function WorkModal() {
 
   if (isFullScreen) {
     return (
-      <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+      <div 
+        className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+        style={{ touchAction: 'none' }}
+      >
         <div className="relative w-full h-full flex items-center justify-center p-4">
           {/* Close Button */}
           <Button
@@ -138,24 +198,27 @@ export function WorkModal() {
             <Minimize2 className="h-6 w-6" />
           </Button>
 
-
-
-
-
           {/* Image Counter */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-white text-sm">
             {currentImageIndex + 1} / {allImages.length}
           </div>
 
           {/* Image Container */}
-          <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+          <div 
+            ref={imageRef}
+            className="relative w-full h-full flex items-center justify-center overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ touchAction: 'none' }}
+          >
             <Image
               src={workData.image || "/placeholder.svg"}
               alt={workData.title}
               fill
               className="object-contain cursor-pointer transition-transform duration-200"
               style={{ 
-                transform: `scale(${zoomLevel})`,
+                transform: `scale(${zoomLevel}) translate(${imagePosition.x}px, ${imagePosition.y}px)`,
                 cursor: zoomLevel > 1 ? 'grab' : 'pointer'
               }}
               onClick={handleImageClick}
@@ -170,7 +233,7 @@ export function WorkModal() {
     <Dialog open={isOpen} onOpenChange={closeModal}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-                      <DialogTitle className="text-2xl font-bebas">{workData.title}</DialogTitle>
+          <DialogTitle className="text-2xl font-light tracking-wide">{workData.title}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6">
@@ -202,6 +265,14 @@ export function WorkModal() {
             <div>
               <h3 className="text-lg font-semibold mb-2">Project Details</h3>
               <p className="text-muted-foreground leading-relaxed">{workData.description}</p>
+              {workData.details && (
+                <div className="mt-4">
+                  <h4 className="font-medium mb-2">Additional Information</h4>
+                  <div className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">
+                    {workData.details}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">

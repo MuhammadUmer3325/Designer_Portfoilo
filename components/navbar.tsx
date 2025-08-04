@@ -27,7 +27,7 @@ export function Navbar() {
   const services = [
     { name: "Banners", href: "/banners" },
     { name: "Profile Pictures", href: "/pfp" },
-    { name: "Cover Art", href: "/collection" },
+    { name: "Custom Poster", href: "/coverart" },
     { name: "Overlays", href: "/overlays" },
     { name: "Logos", href: "/logos" },
   ]
@@ -120,7 +120,7 @@ export function Navbar() {
               
               {/* Mobile Services Section */}
               <div className="px-2 py-1">
-                <div className="text-sm font-semibold text-muted-foreground mb-2">Services</div>
+                <div className="text-sm font-normal text-muted-foreground mb-2">Services</div>
                 <div className="flex flex-col space-y-2 ml-4">
                   {services.map((service) => (
                     <Link

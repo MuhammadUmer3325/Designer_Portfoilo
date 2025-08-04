@@ -21,8 +21,9 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
     align: 'start',
     loop: false,
     skipSnaps: false,
-    dragFree: false,
-    containScroll: 'trimSnaps'
+    dragFree: false, // Snap to next/prev card
+    containScroll: 'trimSnaps',
+    slidesToScroll: 1
   })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -58,7 +59,8 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
       title: item.title,
       image: item.image,
       category: item.category,
-      description: `This is a detailed description of ${item.title}. Created with attention to detail and modern design principles.`,
+      description: item.description || `This is a detailed description of ${item.title}. Created with attention to detail and modern design principles.`,
+      details: item.details,
     })
   }
 
@@ -70,7 +72,7 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
     <section className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-                      <h2 className="text-3xl font-bebas tracking-tight">{collection.title}</h2>
+          <h2 className="text-3xl font-light tracking-wide">{collection.title}</h2>
           <p className="text-muted-foreground mt-2">{collection.description}</p>
         </div>
         {showFirst && collection.items.length > showFirst && (
@@ -110,8 +112,8 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                         className="object-cover blur-md scale-110 opacity-50"
                       />
                     </div>
-                    <div className="relative h-full flex items-center justify-center p-4">
-                      <div className="relative w-full h-32">
+                    <div className="relative h-full flex items-center justify-center">
+                      <div className="relative w-full h-full">
                         <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
@@ -123,18 +125,30 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                   </div>
                 ) : (
-                  <div className="relative aspect-square overflow-hidden">
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                  <div className="relative h-80 overflow-hidden">
+                    <div className="absolute inset-0">
+                      <Image
+                        src={item.image || "/placeholder.svg"}
+                        alt=""
+                        fill
+                        className="object-cover blur-md scale-110 opacity-50"
+                      />
+                    </div>
+                    <div className="relative h-full flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          alt={item.title}
+                          fill
+                          className="object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   </div>
                 )}
                 <div className="p-4">
-                  <h3 className="font-semibold text-sm mb-1 truncate">{item.title}</h3>
+                    <h3 className="font-normal text-base mb-1 truncate">{item.title}</h3>
                   <p className="text-xs text-muted-foreground">{item.category}</p>
                 </div>
               </CardContent>
@@ -145,7 +159,7 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
 
       {/* Mobile View - Show all items in grid if no showFirst, otherwise slider */}
       {showFirst ? (
-        <div className="md:hidden relative">
+        <div className="md:hidden relative touch-pan-y" style={{ touchAction: 'pan-y' }}>
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-4">
               {displayItems.map((item) => (
@@ -165,8 +179,8 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                               className="object-cover blur-md scale-110 opacity-50"
                             />
                           </div>
-                          <div className="relative h-full flex items-center justify-center p-4">
-                            <div className="relative w-full h-32">
+                          <div className="relative h-full flex items-center justify-center">
+                            <div className="relative w-full h-full">
                               <Image
                                 src={item.image || "/placeholder.svg"}
                                 alt={item.title}
@@ -178,18 +192,30 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                         </div>
                       ) : (
-                        <div className="relative aspect-square overflow-hidden">
-                          <Image
-                            src={item.image || "/placeholder.svg"}
-                            alt={item.title}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
+                        <div className="relative h-80 overflow-hidden">
+                          <div className="absolute inset-0">
+                            <Image
+                              src={item.image || "/placeholder.svg"}
+                              alt=""
+                              fill
+                              className="object-cover blur-md scale-110 opacity-50"
+                            />
+                          </div>
+                          <div className="relative h-full flex items-center justify-center">
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={item.image || "/placeholder.svg"}
+                                alt={item.title}
+                                fill
+                                className="object-contain transition-transform duration-300 group-hover:scale-105"
+                              />
+                            </div>
+                          </div>
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                         </div>
                       )}
                       <div className="p-4">
-                        <h3 className="font-semibold text-sm mb-1 truncate">{item.title}</h3>
+                        <h3 className="font-normal text-base mb-1 truncate">{item.title}</h3>
                         <p className="text-xs text-muted-foreground">{item.category}</p>
                       </div>
                     </CardContent>
@@ -198,8 +224,6 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
               ))}
             </div>
           </div>
-          
-
         </div>
       ) : (
         <div className="md:hidden">
@@ -231,8 +255,8 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                           className="object-cover blur-md scale-110 opacity-50"
                         />
                       </div>
-                      <div className="relative h-full flex items-center justify-center p-4">
-                        <div className="relative w-full h-32">
+                      <div className="relative h-full flex items-center justify-center">
+                        <div className="relative w-full h-full">
                           <Image
                             src={item.image || "/placeholder.svg"}
                             alt={item.title}
@@ -244,18 +268,30 @@ export function CollectionGrid({ collection, showFirst }: CollectionGridProps) {
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                     </div>
                   ) : (
-                    <div className="relative aspect-square overflow-hidden">
-                      <Image
-                        src={item.image || "/placeholder.svg"}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
+                    <div className="relative h-80 overflow-hidden">
+                      <div className="absolute inset-0">
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          alt=""
+                          fill
+                          className="object-cover blur-md scale-110 opacity-50"
+                        />
+                      </div>
+                      <div className="relative h-full flex items-center justify-center">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={item.image || "/placeholder.svg"}
+                            alt={item.title}
+                            fill
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      </div>
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="font-semibold text-sm mb-1 truncate">{item.title}</h3>
+                    <h3 className="font-normal text-base mb-1 truncate">{item.title}</h3>
                     <p className="text-xs text-muted-foreground">{item.category}</p>
                   </div>
                 </CardContent>

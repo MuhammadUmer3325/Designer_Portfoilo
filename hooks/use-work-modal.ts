@@ -8,6 +8,7 @@ interface WorkData {
   image: string
   category: string
   description: string
+  details?: string
 }
 
 interface WorkModalStore {

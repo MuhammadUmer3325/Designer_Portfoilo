@@ -37,7 +37,7 @@ export function ContactInfo() {
           <ul className="space-y-2 text-sm">
             <li>• Custom Banner Design</li>
             <li>• Profile Picture Creation</li>
-            <li>• Cover Art Design</li>
+                            <li>• Custom Poster Design</li>
             <li>• Stream Overlay Design</li>
             <li>• Logo & Brand Identity</li>
             <li>• Social Media Graphics</li>

@@ -3,6 +3,8 @@ export interface WorkItem {
   title: string
   image: string
   category: string
+  description?: string
+  details?: string
 }
 
 export interface Collection {
@@ -35,13 +37,13 @@ export const collections: Collection[] = [
     title: "Profile Pictures",
     description: "Custom profile pictures and avatars",
     items: [
-      { id: 11, title: "Gaming Avatar 1", image: "/pfp/pfp1.jpg", category: "Gaming" },
-      { id: 12, title: "Professional PFP", image: "/pfp/pfp2.jpg", category: "Professional" },
-      { id: 13, title: "Anime Style PFP", image: "/pfp/pfp3.jpg", category: "Anime" },
-      { id: 14, title: "Minimalist Avatar", image: "/pfp/pfp4.jpg", category: "Minimalist" },
-      { id: 15, title: "Gaming Avatar 2", image: "/pfp/pfp5.jpg", category: "Gaming" },
-      { id: 16, title: "Creative PFP", image: "/pfp/pfp6.jpg", category: "Creative" },
-      { id: 17, title: "Streamer Avatar", image: "/pfp/pfp7.jpg", category: "Streaming" },
+      { id: 11, title: "Gaming Avatar 1", image: "/placeholder.svg?height=300&width=300", category: "Gaming" },
+      { id: 12, title: "Professional PFP", image: "/placeholder.svg?height=300&width=300", category: "Professional" },
+      { id: 13, title: "Anime Style PFP", image: "/placeholder.svg?height=300&width=300", category: "Anime" },
+      { id: 14, title: "Minimalist Avatar", image: "/placeholder.svg?height=300&width=300", category: "Minimalist" },
+      { id: 15, title: "Gaming Avatar 2", image: "/placeholder.svg?height=300&width=300", category: "Gaming" },
+      { id: 16, title: "Creative PFP", image: "/placeholder.svg?height=300&width=300", category: "Creative" },
+      { id: 17, title: "Streamer Avatar", image: "/placeholder.svg?height=300&width=300", category: "Streaming" },
       { id: 18, title: "Business PFP", image: "/placeholder.svg?height=300&width=300", category: "Business" },
       { id: 19, title: "Artistic PFP", image: "/placeholder.svg?height=300&width=300", category: "Artistic" },
       { id: 20, title: "Gaming Avatar 3", image: "/placeholder.svg?height=300&width=300", category: "Gaming" },
@@ -50,15 +52,21 @@ export const collections: Collection[] = [
   },
   {
     id: "coverart",
-    title: "Cover Art",
-    description: "Custom cover art and album artwork",
+    title: "Custom Poster",
+    description: "Custom poster designs and artwork",
     items: [
-      { id: 22, title: "Music Cover 1", image: "/placeholder.svg?height=400&width=400", category: "Music" },
-      { id: 23, title: "Album Art 1", image: "/placeholder.svg?height=400&width=400", category: "Album" },
-      { id: 24, title: "Podcast Cover", image: "/placeholder.svg?height=400&width=400", category: "Podcast" },
-      { id: 25, title: "EP Cover", image: "/placeholder.svg?height=400&width=400", category: "EP" },
-      { id: 26, title: "Single Cover", image: "/placeholder.svg?height=400&width=400", category: "Single" },
-      { id: 27, title: "Mixtape Cover", image: "/placeholder.svg?height=400&width=400", category: "Mixtape" },
+      { 
+        id: 23, 
+        title: "🏀 Jayson Tatum \"Unstoppable\" Motivational Poster", 
+        image: "/Poster1.webp", 
+        category: "Poster",
+        description: "A high-resolution motivational poster featuring NBA star Jayson Tatum in a bold “Unstoppable” theme.\nPerfect for sports fans, gym decor, or anyone seeking daily inspiration through powerful visuals.",
+        details: "📐 Print Size: A3 (11.7 x 16.5 inches / 297 x 420 mm)\n(Can be resized for A4 or A2 upon request)\n\n📁 You'll Get:\n1 x High-quality PNG file\n1 x High-resolution PDF (print-ready)\n\n📌 Use It For:\nRoom/Gym wall decoration\nStudy inspiration\nSports-themed workspace setup\nGifting to a basketball fan 🎁"
+      },
+      { id: 24, title: "Music Cover 1", image: "/placeholder.svg?height=400&width=400", category: "Music" },
+      { id: 25, title: "Album Art 1", image: "/placeholder.svg?height=400&width=400", category: "Album" },
+      { id: 26, title: "Podcast Cover", image: "/placeholder.svg?height=400&width=400", category: "Podcast" },
+      { id: 27, title: "EP Cover", image: "/placeholder.svg?height=400&width=400", category: "EP" },
     ],
   },
   {

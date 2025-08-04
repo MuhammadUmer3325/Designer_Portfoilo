@@ -55,7 +55,7 @@ export function Footer() {
 
           {/* Services */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Services</h3>
+            <h3 className="font-normal">Services</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/banners" className="hover:text-primary transition-colors">
@@ -74,7 +74,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/collection" className="hover:text-primary transition-colors">
-                  Cover Art
+                  Custom Poster
                 </Link>
               </li>
               <li>
@@ -87,7 +87,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Quick Links</h3>
+            <h3 className="font-normal">Quick Links</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/" className="hover:text-primary transition-colors">
@@ -124,7 +124,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Get In Touch</h3>
+            <h3 className="font-normal">Get In Touch</h3>
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary" />
