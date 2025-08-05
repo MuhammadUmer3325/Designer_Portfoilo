@@ -14,7 +14,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/main logo.png" 
+                src="/main logo.webp" 
                 alt="Art_Athlete Logo" 
                 width={40} 
                 height={40} 

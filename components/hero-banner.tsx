@@ -9,7 +9,7 @@ export function HeroBanner() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Heroimage.jpg"
+          src="/Heroimage.webp"
           alt="Hero Banner"
           fill
           className="object-cover object-center"

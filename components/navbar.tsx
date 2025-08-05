@@ -55,7 +55,7 @@ export function Navbar() {
           <div className="flex items-center justify-center">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/main logo.png" 
+                src="/main logo.webp" 
                 alt="Art_Athlete Logo" 
                 width={50} 
                 height={50} 
